@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #080611;
+    --bg-secondary: #100B1C;
+    --bg-card: #171025;
+    --purple-primary: #9B5CFF;
+    --purple-neon: #BB86FF;
+    --text-muted: #A59BB8;
+  }
+
+  body {
+    background-color: #080611;
+    color: #ffffff;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Glassmorphism and Neon Accents */
+.glass-panel {
+  background: rgba(23, 16, 37, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(155, 92, 255, 0.15);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(187, 134, 255, 0.4);
+  box-shadow: 0 0 25px -5px rgba(155, 92, 255, 0.25);
+}
+
+.neon-glow {
+  box-shadow: 0 0 20px rgba(155, 92, 255, 0.4);
+}
+
+.neon-glow-strong {
+  box-shadow: 0 0 35px rgba(187, 134, 255, 0.6), inset 0 0 15px rgba(155, 92, 255, 0.2);
+}
+
+.neon-border {
+  border: 1px solid rgba(187, 134, 255, 0.35);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #FFFFFF 0%, #E2D4FF 40%, #BB86FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #BB86FF 0%, #9B5CFF 60%, #7A22FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080611;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #251B38;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9B5CFF;
+}
+

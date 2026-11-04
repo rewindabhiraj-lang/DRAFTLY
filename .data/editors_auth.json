@@ -1,0 +1,12 @@
+[
+  {
+    "id": "editor_testeditor_mw25hvoc",
+    "username": "testeditor",
+    "email": "testeditor@draftly.com",
+    "salt": "0e529bb31d434bc569a0953706869ce1",
+    "passwordHash": "b4414808bae85567ff3daec850fa00aa820f8c26db287e60581fb65324c718fa7814162ef4adb4cacea3e706a7f6fbfac0e4d2e5ff4dd4d10c564b1697451302",
+    "role": "editor",
+    "status": "active",
+    "createdAt": "2026-11-04T13:26:49.500Z"
+  }
+]

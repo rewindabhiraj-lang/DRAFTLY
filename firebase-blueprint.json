@@ -1,0 +1,307 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Base user account profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["client", "editor", "admin"] },
+        "status": { "type": "string", "enum": ["active", "pending", "suspended", "rejected"] },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "email", "role", "status"]
+    },
+    "EditorProfile": {
+      "title": "EditorProfile",
+      "description": "Video editor public and professional profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "fullName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "title": { "type": "string" },
+        "bio": { "type": "string" },
+        "experience": { "type": "string" },
+        "skills": { "type": "array" },
+        "categories": { "type": "array" },
+        "portfolioUrl": { "type": "string" },
+        "instagramUrl": { "type": "string" },
+        "youtubeUrl": { "type": "string" },
+        "startingPrice": { "type": "number" },
+        "availability": { "type": "string", "enum": ["Available Now", "Busy", "Booked"] },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected", "suspended"] },
+        "rating": { "type": "number" },
+        "reviewCount": { "type": "number" },
+        "completedProjectsCount": { "type": "number" },
+        "featured": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "fullName", "email", "title", "startingPrice", "status"]
+    },
+    "ClientProfile": {
+      "title": "ClientProfile",
+      "description": "Client profile for hiring creators",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "fullName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "company": { "type": "string" },
+        "bio": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "suspended"] },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "fullName", "email", "status"]
+    },
+    "HiringRequest": {
+      "title": "HiringRequest",
+      "description": "Project proposal and hiring request from client to editor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "clientName": { "type": "string" },
+        "clientEmail": { "type": "string" },
+        "editorId": { "type": "string" },
+        "editorName": { "type": "string" },
+        "projectTitle": { "type": "string" },
+        "projectDescription": { "type": "string" },
+        "budget": { "type": "number" },
+        "deadline": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "accepted", "rejected", "in_progress", "submitted", "revision_requested", "completed", "cancelled"] },
+        "submissionNotes": { "type": "string" },
+        "submissionUrls": { "type": "array" },
+        "rejectionReason": { "type": "string" },
+        "revisionNotes": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "clientId", "editorId", "projectTitle", "budget", "deadline", "status"]
+    },
+    "Conversation": {
+      "title": "Conversation",
+      "description": "One-on-one direct message channel between client and editor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "participants": { "type": "array" },
+        "clientId": { "type": "string" },
+        "clientName": { "type": "string" },
+        "editorId": { "type": "string" },
+        "editorName": { "type": "string" },
+        "lastMessage": { "type": "string" },
+        "lastMessageTimestamp": { "type": "string" },
+        "unreadBy": { "type": "array" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "participants", "clientId", "editorId"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Chat message within a conversation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "conversationId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "text": { "type": "string" },
+        "read": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "conversationId", "senderId", "text", "createdAt"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Client review and rating for an editor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "requestId": { "type": "string" },
+        "clientId": { "type": "string" },
+        "clientName": { "type": "string" },
+        "editorId": { "type": "string" },
+        "editorName": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "clientId", "editorId", "rating", "comment", "createdAt"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "User notification alert",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "type": { "type": "string" },
+        "link": { "type": "string" },
+        "read": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "title", "message", "read", "createdAt"]
+    },
+    "ContactMessage": {
+      "title": "ContactMessage",
+      "description": "Support inquiries from Contact page",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string", "enum": ["unread", "read", "replied"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "email", "subject", "message", "createdAt"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Video editing category",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "description": { "type": "string" },
+        "icon": { "type": "string" },
+        "editorCount": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "slug"]
+    },
+    "SavedEditor": {
+      "title": "SavedEditor",
+      "description": "Client bookmark for an editor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "editorId": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "clientId", "editorId", "createdAt"]
+    },
+    "Report": {
+      "title": "Report",
+      "description": "User or project reports submitted to admin",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "reporterId": { "type": "string" },
+        "reportedUserId": { "type": "string" },
+        "reason": { "type": "string" },
+        "details": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "investigating", "resolved"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "reporterId", "reportedUserId", "reason", "status", "createdAt"]
+    },
+    "PlatformSettings": {
+      "title": "PlatformSettings",
+      "description": "Global website settings and announcements",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "announcement": { "type": "string" },
+        "showAnnouncement": { "type": "boolean" },
+        "featuredEditorIds": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Admin actions and system audit logs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "action": { "type": "string" },
+        "actorId": { "type": "string" },
+        "actorEmail": { "type": "string" },
+        "targetId": { "type": "string" },
+        "details": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "action", "actorId", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User account documents keyed by auth UID"
+    },
+    "/editorProfiles/{editorId}": {
+      "schema": "EditorProfile",
+      "description": "Editor profiles keyed by auth UID"
+    },
+    "/clientProfiles/{clientId}": {
+      "schema": "ClientProfile",
+      "description": "Client profiles keyed by auth UID"
+    },
+    "/hiringRequests/{requestId}": {
+      "schema": "HiringRequest",
+      "description": "Hiring requests and project tracking between client and editor"
+    },
+    "/conversations/{conversationId}": {
+      "schema": "Conversation",
+      "description": "Direct message chat channels"
+    },
+    "/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Chat messages across conversations"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Verified client reviews for completed projects"
+    },
+    "/notifications/{notificationId}": {
+      "schema": "Notification",
+      "description": "User notifications"
+    },
+    "/contactMessages/{contactId}": {
+      "schema": "ContactMessage",
+      "description": "Messages sent through the Contact Us form"
+    },
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Editing categories and tags"
+    },
+    "/savedEditors/{saveId}": {
+      "schema": "SavedEditor",
+      "description": "Client bookmarks for editors"
+    },
+    "/reports/{reportId}": {
+      "schema": "Report",
+      "description": "User moderation reports"
+    },
+    "/platformSettings/{settingId}": {
+      "schema": "PlatformSettings",
+      "description": "Global announcements and settings"
+    },
+    "/auditLogs/{logId}": {
+      "schema": "AuditLog",
+      "description": "Platform audit and action logs"
+    },
+    "/admins/{adminUid}": {
+      "schema": "User",
+      "description": "Admin UID allowlist"
+    }
+  }
+}

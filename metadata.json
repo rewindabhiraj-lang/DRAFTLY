@@ -1,0 +1,6 @@
+{
+  "name": "DRAFTLY - Video Editor Marketplace",
+  "description": "Creative Talent. Extraordinary Results. The premier marketplace for hiring elite video editors, motion graphics artists, and visual storytellers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
